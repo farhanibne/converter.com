@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Weight Exchange</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4"
+        crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+    <link rel="shortcut icon" href="favicon.png" type="image/x-icon">
+    <style>
+        h1 {
+            margin-top: 50px;
+            margin-bottom: 25px;
+        }
+
+        body {
+            background-color: #333;
+            color: white
+        }
+
+        .card {
+            margin: 2px;
+            padding: 5px;
+            display: none;
+        }
+
+        .fa-heart {
+            color: red;
+        }
+
+        footer {
+            text-align: center;
+            color: white;
+            
+        }
+    </style>
+</head>
+
+<body class="container">
+    <h1 class="display-1 text-center">Weight Exchange</h1>
+    <div class="row justify-content-around">
+        <form class="col-md-6">
+            <div class="form-group ">
+                <input class="form-control form-control-lg" type="number" placeholder="Enter weight in pounds...">
+            </div>
+            <div class="card bg-primary text-white">
+                <div class="card-body" id="wtInKgs">
+                    <h4>Kilograms: </h4>
+                    <div id="kgOutput"></div>
+                </div>
+            </div>
+            <div class="card bg-success text-white">
+                <div class="card-body" id="wtInOunces">
+                    <h4>Ounces: </h4>
+                    <div id="OzOutput"></div>
+                </div>
+            </div>
+            <div class="card bg-danger text-white">
+                <div class="card-body" id="wtInStones">
+                    <h4>Stones: </h4>
+                    <div id="stonesOutput"></div>
+                </div>
+            </div>
+        </form>
+    </div>
+
+    <script>
+        document.getElementsByTagName('input')[0].addEventListener("input", calculateWeight);
+
+        function calculateWeight() {
+            var cardLists = document.getElementsByClassName('card');
+
+            let wtInPounds = this.value;
+            if (wtInPounds) {
+                for (let item of cardLists) {
+                    console.log(item.style.display = "block");
+                }
+                document.getElementById('kgOutput').innerHTML = wtInPounds * 0.453592;
+                document.getElementById('OzOutput').innerHTML = wtInPounds * 15.99998694864;
+                document.getElementById('stonesOutput').innerHTML = wtInPounds * 0.071428513163571433209;
+            }
+            else {
+                document.getElementById('kgOutput').innerHTML = "";
+                document.getElementById('OzOutput').innerHTML = "";
+                document.getElementById('stonesOutput').innerHTML = "";
+                for (let item of cardLists) {
+                    console.log(item.style.display = "none");
+                }
+            }
+        }
+    </script>
+
+    <footer>
+        ©DZ.ALL RIGHTS RESERVED.
+    </footer>
+</body>
+
+</html>
